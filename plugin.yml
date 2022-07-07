@@ -1,0 +1,20 @@
+main: tdp.levelProgression.LevelProgression
+version: 1.3.0
+name: LevelProgression
+author: TextoDePrueba
+description: Unlock abilities and promote a team experience
+api-version: 1.19
+
+commands:  
+  startprogresion: 
+    description: Restarts all internal variables of the player
+    usage: "Usage: /<command> [player]"
+  setlevel: 
+    description: Changes the player's level on the specified ability
+    usage: "Usage: /<command> [player] [hability | ALL] [level_number]"
+  getlevel: 
+    description: Gets plugin stored data in specified player
+    usage: "Usage: /<command> [player]"
+  menulvl: 
+    description: Opens the level menu
+    usage: "Usage: /<command>"
