@@ -1,0 +1,134 @@
+#language: this configuration will change the default language of the plugin. 
+#Remember to restart the server after changing it. List of possible languages:
+#-"ENG"
+#-"ESP_ARG"
+language: "ENG" 
+
+#xpToLevel: it's the necessary xp to obtain in order to increase a level (negatives numbers will cause exceptions)
+#
+xpToLevel: 1000
+
+#breakItemWhenDenied: this configuration decides wether or not an item will break if the player is not able to use it.
+#If set to "false" the denied item will drop in place just like denied enchantments do. 
+#
+breakItemWhenDenied: true
+
+#minLevelToEnd: this configuration is used to allow or deny a player's access to the End dimension.
+#Set to 0 if all players should be able to go trough a portal independently of their level.
+#
+minLevelToEnd: 500
+
+#maxLevel: This is self explaining :). This value is the maximum reacheable level for any player. 
+#It also corresponds to the maximum ammount of reacheable Ability points. 
+#It's recommended not to go crazy on this number, high values (>10000) may cause exceptions.
+#
+maxLevel: 700
+
+#playerRewardKillingMultiplier: When some player kills somebody, his experience levels
+#will be converted to Ability XP and given to the killer.
+#Each level equals this ammount of Ability XP.
+#
+playerRewardKillingPerLevel: 200
+
+#minXpToWarn: This is the minimun experience levels (the normal ones) a player has to have before the server
+#starts warning all players about his reward (with a small probability of happening).
+#
+minXpToWarn: 15
+
+#Contains the information and configuration of how the plugin should work in each world
+#If you have an additional world, just copy the format of the others and add it with the configuration you want.
+#
+worlds: 
+
+  #world: This is the world's folder name, by default is set to "world", "world_nether" and "world_the_end"
+  #
+  world:
+  
+    #active: This configuration decides whether or not the plugin should work in this work. 
+    #Disabling this (set to false) means that all the new mechanics will be desabled (this works mainly for abilities and custom items interactions).
+    #
+    active: true
+
+    #disableScoreboard: This configuration will change the display of the levels. 
+    #If set to 'true' the plugin won't use scoreboards at all. This is helpfull if there's some compatibility issues with other plugins.
+    #All other features will work naturally.
+    #
+    #If you're planning to acces the values and use then in your own scoreboard, they are all stored as persistent data containers inside players.
+    #Code example to get the LEVEL data:
+    #{
+    # String data = "LEVEL";
+    # player.getPersistentDataContainer().get(new NamespacedKey(Bukkit.getPluginManager().getPlugin("LevelProgression"), "data" ), PersistentDataType.INTEGER);
+    #}
+    #To access the rest of the values replace data with one of the following Strings: 
+    #"XP","LEVEL","ABILITYPOINTS","ADVENTURER","WIZARD","SOLDIER","ARCHER","SHIELDMAN","TRIDENTMAN","MINER","LUMBERJACK","FOODLVL","CC1"
+    disableScoreboard: false
+
+    #xPmultiplier: Each time the player receive normal experience points, they will be multiplied by this factor. The resultant ammount will be given
+    #to the same player as "ability-xp". By default, if a player picks up 10 experience points, it will also give 50 ability-xp. 
+    #
+    xPmultiplier: 5
+
+    #NoXpBlockReward: Decides wether or not breaking a block that shouldn't drop xp will drop ability-xp (like dirt, stone, logs, etc)
+    #
+    NoXpBlockReward: true
+
+    #bossHealtMultiplier: When spawning a boss, it's health is equal to the level of the player who summoned it multiplied by this constant. 
+    #The higher the value, the harder will be to kill a boss. 
+    #
+    bossHealtMultiplier: 1.0
+
+    #healthPerReward: When a boss is killed, it will drop a full level (two bottles of 500XP) depending on the boss health. 
+    #The ecuation to get the dropped bottles is this: ((bossMaxHealth / healthPerReward)*2).
+    #bossMaxHealth depends on the level of the player who summoned the boss.
+    #
+    healthPerReward: 75
+
+    #evilSpiritProbability: The probability of spawning an evil spirit each time a mob spawns "naturally" (SpawnReason.NATURAL). 
+    #This value is the porcentage.
+    #
+    #Set to 0 to disable this characteristic. 
+    #
+    evilSpiritProbability: 3
+
+    #evilSpiritSpawnAtEgg: Normally using a spawn egg to summon a mob will allways spawn a evil spirit too. 
+    #If this value is set to 'false', using a spawn egg will not summon an evil spirit.
+    #
+    evilSpiritSpawnAtEgg: true
+
+    #ChunkTestDelay: Time in seconds between chunk "wildness" tests. 
+    #If this test succeeds it will spawn a set of mobs and convert the chunk in "not wild".
+    #
+    #Set to -1 to disable automatic tests (It will still be possible to "un-wild" a zone using the specific item designed with that purpose).
+    #
+    ChunkTestDelay: 200
+
+    #ChunkProbability: This is the probability of spawning mobs each time a chunk "wildness" is tested. 
+    #If this test succeeds it will spawn a set of mobs and convert the chunk in "not wild".
+    #
+    #Set to 0 to disable this characteristic (everytime a chunk is loaded, it will get the persistentDataContainer "notWild")
+    #
+    ChunkProbability: 15
+
+  world_nether:
+    active: true
+    disableScoreboard: false
+    xPmultiplier: 6
+    NoXpBlockReward: true
+    bossHealtMultiplier: 2.0
+    healthPerReward: 80
+    evilSpiritProbability: 0
+    evilSpiritSpawnAtEgg: false
+    ChunkTestDelay: -1
+    ChunkProbability: 15
+
+  world_the_end:
+    active: true  
+    disableScoreboard: false
+    xPmultiplier: 4
+    NoXpBlockReward: false
+    bossHealtMultiplier: 3.0
+    healthPerReward: 90
+    evilSpiritProbability: 0
+    evilSpiritSpawnAtEgg: false
+    ChunkTestDelay: -1
+    ChunkProbability: 0
