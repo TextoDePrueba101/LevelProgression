@@ -33,7 +33,7 @@ public class MenuListener implements Listener {
 	}
 	
 	
-	@EventHandler //eventhandler hace que cuando suceda lo de arriba, el c�digo debajo corra
+	@EventHandler
 	public void stickEvent(PlayerInteractEvent e) {
 		if (!LevelProgression.testPluginActive(e.getPlayer().getWorld())) return;
 
